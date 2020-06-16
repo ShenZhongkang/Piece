@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Throttle and Debounce</title>
+    <style>
+      html,
+      body {
+        height: 500%;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">Submit</button>
+    <script>
+      // ============== throttle ===============
+      function throttle(fn, delay) {
+        let lastTime = 0;
+        return function () {
+          let curTime = Date.now();
+          if (curTime - lastTime > delay) {
+            fn.call(this);
+            lastTime = curTime;
+          }
+        };
+      }
+      // onscroll
+      document.onscroll = throttle(function () {
+        console.log(Date.now());
+      }, 1000);
+
+      // ============== debounce ===============
+      function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            fn.apply(this);
+          }, delay);
+        };
+      }
+
+      // on btn clicked
+      const btn = document.getElementById("btn");
+      btn.onclick = debounce(function () {
+        console.log("button clicked");
+      }, 1000);
+    </script>
+  </body>
+</html>
