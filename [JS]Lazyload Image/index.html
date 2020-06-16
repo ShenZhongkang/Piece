@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazyload Images</title>
+    <style>
+      .img-item {
+        display: block;
+        margin-bottom: 20px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=1"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=2"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=3"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=4"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=5"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=6"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=7"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=8"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=9"
+    />
+    <img
+      class="img-item"
+      src=""
+      alt=""
+      lazyload="true"
+      data-original="https://dummyimage.com/300x200/000/fff&text=10"
+    />
+    <script>
+      const viewHeight = document.documentElement.clientHeight; // visible height
+
+      // lazyload function
+      function lazyload() {
+        // get all img tags
+        const eles = document.querySelectorAll("img[data-original][lazyload]");
+        // for each image change it's src
+        Array.from(eles).forEach((item, index) => {
+          let rect;
+          if (item.dataset.original === "") {
+            return;
+          }
+          rect = item.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < viewHeight) {
+            !(function () {
+              let img = new Image();
+              img.src = item.dataset.original;
+              img.onload = function () {
+                item.src = img.src;
+              };
+              item.removeAttribute("data-original");
+              item.removeAttribute("lazyload");
+            })();
+          }
+        });
+      }
+
+      lazyload(); // first enter
+      document.addEventListener("scroll", lazyload);
+    </script>
+  </body>
+</html>
