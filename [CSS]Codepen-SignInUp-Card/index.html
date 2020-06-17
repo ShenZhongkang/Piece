@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up / Sign In Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="filter"></div>
+      <div class="menu">
+        <div class="bars"></div>
+      </div>
+      <img
+        class="logo"
+        src="https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png"
+        alt="Codepen"
+      />
+      <p class="desc">Demo or it didn't happen</p>
+      <div class="signInInfo">
+        <form action="">
+          <input type="email" name="" id="email" placeholder="Username" />
+          <input type="password" name="" id="password" placeholder="Password" />
+        </form>
+      </div>
+      <button class="signInButton" type="button">Sign In</button>
+      <p class="signup">Don't Have An Account? <span>Sign Up!</span></p>
+      <ul class="navigation">
+        <li class="pens"><a href="#">Picked Pens</a></li>
+        <li class="posts"><a href="#">Picked Posts</a></li>
+        <li class="collections"><a href="#">Picked Collections</a></li>
+        <li class="pro">
+          <a href="#"> Go <span>Pro</span></a>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const screen = document.querySelector(".screen");
+      const menu = document.querySelector(".menu");
+      const navigation = document.querySelector(".navigation");
+      menu.onclick = function () {
+        if (menu.className.search("active") !== -1) {
+          menu.classList.remove("active");
+          navigation.classList.remove("active");
+        } else {
+          menu.classList.add("active");
+          navigation.classList.add("active");
+        }
+      };
+    </script>
+  </body>
+</html>
