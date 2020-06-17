@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * The URL.createObjectURL() static method available in Javascript creates a unique URL to represent an object passed to it as a parameter.
+       * This works because generating a UUID for the blob URL is part of this spec(https://www.w3.org/TR/FileAPI/#blob-url).
+       */
+      function uuid() {
+        const temp_url = URL.createObjectURL(new Blob());
+        let url_random_string = temp_url.toString();
+        URL.revokeObjectURL(temp_url);
+        return url_random_string.split(/[:\/]/g).pop();
+      }
+      console.log(uuid()); // xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx
+    </script>
+  </body>
+</html>
