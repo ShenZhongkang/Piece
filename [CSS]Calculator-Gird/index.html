@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 1rem;
+      }
+      #calculator {
+        box-shadow: 0 0 20px 0 rgba(17, 17, 17, 0.4);
+        max-width: 300px;
+        max-height: 400px;
+        height: 100%;
+        margin: 2px auto;
+        background: rgba(0, 0, 0, 0.2);
+        user-select: none;
+        border-radius: 5px;
+      }
+      .grid-container {
+        display: grid;
+        height: 100%;
+        grid-template-columns: repeat(4, minmax(1em, 1fr));
+        grid-template-rows: repeat(5, minmax(1em, 1fr));
+        grid-template-areas:
+          "digits digits digits digits"
+          "seven  eight  nine   enter "
+          "four   five   six    enter "
+          "one    two    three  enter "
+          ".      zero   .      enter ";
+      }
+
+      .grid-container > * {
+        cursor: pointer;
+        display: flex;
+        font-size: 2em;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border: 1px solid #333;
+        background-color: #006494;
+        font-family: "Arial Narrow Bold", sans-serif;
+        border-radius: 4px;
+        overflow: hidden;
+        transition: 0.2s background-color;
+      }
+      .grid-container > *:hover {
+        background-color: #003554;
+      }
+      .grid-container > *:active {
+        transform: scale(0.95);
+      }
+      .digits {
+        grid-area: digits;
+        background: #00a6fb;
+        text-align: center;
+        font-size: 260%;
+        padding: 0 0.1em;
+      }
+
+      .zero {
+        grid-area: zero;
+      }
+
+      .enter {
+        grid-area: enter;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+
+      .one {
+        grid-area: one;
+      }
+
+      .two {
+        grid-area: two;
+      }
+
+      .three {
+        grid-area: three;
+      }
+
+      .four {
+        grid-area: four;
+      }
+
+      .five {
+        grid-area: five;
+      }
+
+      .six {
+        grid-area: six;
+      }
+
+      .seven {
+        grid-area: seven;
+      }
+
+      .eight {
+        grid-area: eight;
+      }
+
+      .nine {
+        grid-area: nine;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <div class="grid-container">
+        <div class="digits">****</div>
+        <div class="zero">0</div>
+        <div class="enter">Enter</div>
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+        <div class="nine">9</div>
+      </div>
+    </div>
+  </body>
+</html>
